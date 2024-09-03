@@ -2,7 +2,7 @@
 org: eternalightinfotech
 # "app" enables Serverless Framework Dashboard features and sharing them with other Services.
 app: nestjs-demo
-service: nestjs-demo
+service: nestjs-serverless
 
 provider:
   name: aws
@@ -16,6 +16,7 @@ functions:
     handler: dist/serverless.handler
     events:
       - httpApi:
+          cors: false
           method: any
           path: /{proxy+}
 
