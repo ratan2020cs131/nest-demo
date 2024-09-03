@@ -1,0 +1,20 @@
+service: nestjs-demo
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: dev
+  region: ap-south-1
+  timeout: 15
+
+functions:
+  api:
+    handler: dist/serverless.handler
+    events:
+      - httpApi:
+          method: any
+          path: /{proxy+}
+
+plugins:
+  - serverless-jetpack
+  - serverless-offline
