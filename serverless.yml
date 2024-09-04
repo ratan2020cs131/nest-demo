@@ -24,4 +24,5 @@ plugins:
   - serverless-offline
 
 package:
+  excludeDevDependencies: true
   individually: true
