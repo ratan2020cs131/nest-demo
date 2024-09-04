@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 
-interface HelloResponse {
+export interface HelloResponse {
   message: string;
 }
 
