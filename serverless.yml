@@ -4,12 +4,15 @@ org: eternalightinfotech
 app: nestjs-demo
 service: nestjs-serverless
 
+useDotenv: true
+
 provider:
   name: aws
   runtime: nodejs20.x
-  stage: dev
   region: ap-south-1
   timeout: 15
+  environment:
+    DB_URL: ${env:DB_URL}
 
 functions:
   api:
@@ -17,8 +20,8 @@ functions:
     events:
       - httpApi:
           method: any
-          path: /{proxy+}
+          path: "/{proxy+}"
 
 plugins:
   - serverless-jetpack
-
+  - serverless-offline
