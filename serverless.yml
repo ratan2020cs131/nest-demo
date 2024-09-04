@@ -22,3 +22,12 @@ functions:
 plugins:
   - serverless-jetpack
   - serverless-offline
+
+custom:
+  customBuild:
+    commands:
+      build: "npm run build"
+
+hooks:
+  before:package:createDeploymentArtifacts: "npm run build"
+  after:package:createDeploymentArtifacts: "rm -rf dist"
