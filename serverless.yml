@@ -21,8 +21,4 @@ functions:
 
 plugins:
   - serverless-jetpack
-  - serverless-offline
 
-package:
-  excludeDevDependencies: false
-  individually: true
