@@ -16,7 +16,6 @@ functions:
     handler: dist/serverless.handler
     events:
       - httpApi:
-          cors: false
           method: any
           path: /{proxy+}
 
