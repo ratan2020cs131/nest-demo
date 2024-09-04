@@ -10,7 +10,7 @@ import { join } from "path";
       autoSchemaFile:
         process.env.NODE_ENV === "production"
           ? true
-          : join(process.cwd(), "src/schema.gql"),
+          : join(process.cwd(), "/tmp/schema.gql"),
     }),
   ],
 })
