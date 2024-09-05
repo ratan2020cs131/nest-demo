@@ -6,12 +6,17 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from "@nestjs/common";
-import { UserService } from "./user.service";
-import { User } from "./user.interface";
 import { Observable } from "rxjs";
+import { Roles, RolesEnum } from "src/decorators/roles.decorators";
+import { AuthenticationGuard } from "src/guards/authentication.guard";
+import { AuthorizationGuard } from "src/guards/authorization.guard";
 import { DeleteResult, UpdateResult } from "typeorm";
+import { User } from "./user.interface";
+import { UserService } from "./user.service";
 
+@UseGuards(AuthenticationGuard)
 @Controller("user")
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -21,8 +26,10 @@ export class UserController {
     return this.userService.getAllUser();
   }
 
+  @Roles(RolesEnum.User)
+  @UseGuards(AuthorizationGuard)
   @Get(":id")
-  getUserById(@Param("id") id): Observable<User> {
+  getUserById(@Param("id") id: number): Observable<User> {
     return this.userService.getUserById(id);
   }
 

@@ -13,6 +13,7 @@ provider:
   timeout: 15
   environment:
     DB_URL: ${env:DB_URL}
+    JWT_SECRET: ${env:JWT_SECRET}
 
 functions:
   api:
