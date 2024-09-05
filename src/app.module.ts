@@ -5,6 +5,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { GraphqlModule } from "./graphql.module";
+import { AuthModule } from "./modules/auth/auth.module";
 import { UserModule } from "./modules/user/user.module";
 
 @Module({
@@ -19,6 +20,7 @@ import { UserModule } from "./modules/user/user.module";
       global: true,
       secret: process.env.JWT_SECRET,
     }),
+    AuthModule,
     GraphqlModule,
     UserModule,
   ],
