@@ -20,7 +20,7 @@ export class AuthenticationGuard implements CanActivate {
 
     try {
       const authToken: string = request.headers.authorization?.split(" ")[1];
-      const decoedToken = this.jwtService.verify(authToken);
+      const decoedToken = this.jwtService.decode(authToken);
       this.logger.log(
         `Authenticating {user: ${JSON.stringify(decoedToken.name)}}`,
       );

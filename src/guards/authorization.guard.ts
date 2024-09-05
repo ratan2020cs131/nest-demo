@@ -29,7 +29,9 @@ export class AuthorizationGuard implements CanActivate {
 
     try {
       const authToken: string = request.headers.authorization?.split(" ")[1];
-      const decoedToken = this.jwtService.verify(authToken);
+      const decoedToken = this.jwtService.verify(authToken, {
+        algorithms: ["RS256"],
+      });
 
       if (requiredRoles.includes(decoedToken.role)) {
         this.logger.log(
